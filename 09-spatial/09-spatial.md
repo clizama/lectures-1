@@ -4,7 +4,7 @@ subtitle: "Lecture 9: Spatial analysis in R"
 author:
   name: Grant R. McDermott
   affiliation: University of Oregon | [EC 607](https://github.com/uo-ec607/lectures)
-# date: Lecture 9  #"06 February 2020"
+# date: Lecture 9  #"06 January 2021"
 output: 
   html_document:
     theme: flatly
@@ -528,7 +528,7 @@ norway %>%
 
 ![](09-spatial_files/figure-html/norway_fixed-1.png)<!-- -->
 
-**Aside:** I always like to dettach the **maps** package once I'm finished using it, since it avoids potential namespace conflicts with `purrr::map`.
+**Aside:** I always like to detach the **maps** package once I'm finished using it, since it avoids potential namespace conflicts with `purrr::map`.
 
 
 ```r
@@ -742,7 +742,7 @@ oregon
 ## 10 MULTIPOLYGON (((-124.2145 4...
 ```
 
-So, the popup text of interest is held within the "NAME" and "estimate" columns. I'll use a bit of regular expression work to extract the county name from the "NAME" column (i.e. without the state) and then build up the map layer by layer. Note that the **leaflet** syntax requires that I prepend variables names with a tilde (`~`) when I refer to them in the plot building process. This tilde operates in much the same way as the asthetics (`aes()`) function does in **ggplot2**. One other thing to note is that I need to define a colour palette --- which I'll `col_pal` here --- separately from the main plot. This is a bit of an inconvience if you're used to the fully-integrated **ggplot2** API, but only a small one. 
+So, the popup text of interest is held within the "NAME" and "estimate" columns. I'll use a bit of regular expression work to extract the county name from the "NAME" column (i.e. without the state) and then build up the map layer by layer. Note that the **leaflet** syntax requires that I prepend variables names with a tilde (`~`) when I refer to them in the plot building process. This tilde operates in much the same way as the asthetics (`aes()`) function does in **ggplot2**. One other thing to note is that I need to define a colour palette --- which I'll call `col_pal` here --- separately from the main plot. This is a bit of an inconvenience if you're used to the fully-integrated **ggplot2** API, but only a small one. 
 
 
 ```r
@@ -769,6 +769,11 @@ oregon %>%
     title = "Population percentiles",
     opacity = 1
     )
+```
+
+```
+## Warning in CPL_crs_from_input(x): GDAL Message 1: +init=epsg:XXXX syntax is
+## deprecated. It might return a CRS with a non-EPSG compliant axis order.
 ```
 
 <!--html_preserve--><div id="htmlwidget-9dc25d4c47b4e188be5c" style="width:100%;height:1500px;" class="leaflet html-widget"></div>
